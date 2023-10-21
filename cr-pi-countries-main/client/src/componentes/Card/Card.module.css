@@ -1,0 +1,103 @@
+
+
+.container {
+   
+    display: flex;
+    
+    justify-content:space-around;
+    
+
+    padding: 2%;
+    width: auto;
+    background: rgba(18, 155, 219, 0.692);
+    border-radius: 20px;
+ 
+    margin-top: 15px;
+}
+
+    .flag {
+        float: left;
+        display: flex;
+        align-items: stretch;
+        justify-content: start;
+        flex-direction: column;}
+        
+      
+
+        .flag h2 {
+            width: 400px;
+            text-align: center;
+        }
+
+        .flag img {
+         
+            width: 400px;
+            height: 300px;
+            border: 1px solid gray;
+            border-radius: 4px;
+            padding: 10px;
+        }
+    
+
+    .cont {
+       
+        display: flex;
+        align-items: center;
+        justify-content:space-around;
+       
+  
+      
+    }
+       
+        .detail {
+            width: 50%;
+            float: left;
+            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;
+           
+            
+        }
+            .details {
+                width: 50%;
+                float: left;
+               
+                
+            }
+            .details h1{
+                border: 1px solid white;
+                background-color: white;
+                border-radius: 25px;
+                padding-left: 8px;
+            }
+            .inf{
+                display: flex;
+                
+                
+            }
+            .inf h4{
+                margin-left: 5px;
+                
+            }
+            .inf p{
+                color:white;
+             
+              
+              
+
+                
+            }
+
+            .activities {
+                float: right;
+                padding-bottom: 96px;
+               
+            }
+        
+            .activities h1{
+                border: 1px solid white;
+                background-color: white;
+                border-radius: 25px;
+                padding-left: 8px;
+                padding-right: 5px;
+            }
+
+
