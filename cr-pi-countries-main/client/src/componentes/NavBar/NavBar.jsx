@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useLocation } from 'react-router-dom';
-import { getByName } from '../Controllers/index';
+import { getByName } from '../../Controllers/index';
 import style from '../NavBar/NavBar.module.css';
 import planet from '../../images/planet.png'
 import { AiOutlineSearch } from "react-icons/ai";

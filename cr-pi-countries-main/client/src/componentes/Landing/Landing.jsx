@@ -20,3 +20,5 @@ export default function Landing(){
         </Fragment>
     )
 }
+
+// Este componente solo tiene un boton que linkea a /countries

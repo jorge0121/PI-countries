@@ -1,4 +1,3 @@
-import axios from 'axios'
 import {
     GET_ACTIVITY,
     BY_ACTIVITY,
@@ -11,6 +10,7 @@ import {
     FAILURE,
     LOADING
 }from './ActionsName'
+import axios from 'axios';
 
 const url = 'http://localhost:3001';
 
@@ -19,7 +19,10 @@ export function getCountries() {
         try {
             const res = await axios.get(`${url}/countries`)
             return dispatch({
-                type: GET_COUNTRIES,
+                type: GET_COUNTRIES,                            //Realiza una solicitud GET al endpoint
+                                                                //y una vez que se recibe la respuesta, 
+                                                                //dispara una acción para almacenar la lista de países
+                                                                //en el store de la aplicación.
                 payload: res.data
             })
         } catch (error) {
@@ -91,7 +94,8 @@ export function getActivity() {
         }
     }
 }
-
+//devuelven un objeto de acción con un tipo específico y un payload que serán
+// usado para ordenar, filtrar o realizar acciones en el Home
 export function byOrder(payload) {
     return {
         type: BY_ODER,

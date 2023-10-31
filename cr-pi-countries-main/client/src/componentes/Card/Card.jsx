@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getDetail } from '../Controllers/index'
+import { getDetail } from '../../Controllers/index'
 import style from './Card.module.css';
 
 import planet from '../../images/planet.png';
@@ -8,15 +8,17 @@ import { useParams } from 'react-router-dom';
 
 function Card(props) {
     const dispatch = useDispatch()
-    const details = useSelector(state => state.details)
+    const details = useSelector(state => state.details) // accedo al estado global 
     const loading = useSelector(state => state.loading)
-    let {id}=useParams();
-
+    let {id}=useParams(); // obtengo id por params
+    // solicitud a detail
     useEffect(() => {
         dispatch(getDetail(id));
       }, [id]);
-      console.log(details.activities,"countries details");
+      //console.log(details.activities,"countries details");
 
+      
+      // si existen actividades las mapeo
     const activities = details.activities?.map(e => {
         return {
             name: e.name,
@@ -26,7 +28,7 @@ function Card(props) {
         }
     })
     
-    
+    //renderizo la info que contiene una card
 
     return (
         
@@ -49,9 +51,18 @@ function Card(props) {
                                     <p>Continent:</p>
                                     <h4> {details.continent}</h4>
                                     </div>
-                                    <p>Capital: {details.capital}</p>
-                                    <p>Population: {details.population}</p>
-                                    <p>Subregion: {details.subregion}</p>
+                                    <div className={style.inf}>
+                                    <p>Capital:</p>
+                                    <h4>{details.capital}</h4>
+                                    </div>
+                                    <div className={style.inf}>
+                                    <p>Population:</p>
+                                     <h4>{details.population}</h4>
+                                   </div>  
+                                   <div className={style.inf}>  
+                                    <p>Subregion:</p>
+                                    <h4>{details.subregion}</h4>
+                                    </div>
                                 </div>
                                 <div className={style.activities}>
                                     <h1>Activities</h1>

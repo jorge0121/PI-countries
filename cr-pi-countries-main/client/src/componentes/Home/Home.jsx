@@ -4,28 +4,28 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import {getActivity, byContinent, byPopulation, byOrder, getCountries, byActivity} from '../Controllers/index';
+import {getActivity, byContinent, byPopulation, byOrder, getCountries, byActivity} from '../../Controllers/index';
 import style from './Home.module.css';
 import Paginado from '../Paginado/Paginado';
 
 
 function Home() {
-    const dispatch = useDispatch()
+    const dispatch = useDispatch() //hook  para usar la funcion useSelector y useDispatch
     const [order, setOrder] = useState('')
 
-    const countries = useSelector(state => state.countries)
-    const activity = useSelector(state => state.activity)
+    const countries = useSelector(state => state.countries) //accedo al estado global countries
+    const activity = useSelector(state => state.activity) // accedo al estado global activities
 
-    const [currentPage, setCurrentPage] = useState(1);
-    const [countriesPerPage, setCountriesPerPage] = useState(9);
+    const [currentPage, setCurrentPage] = useState(1); // pagina actual
+    const [countriesPerPage, setCountriesPerPage] = useState(8);  // cantidad de paises por pagina
 
-    const max = Math.round(countries.length / countriesPerPage);
-
+    const max = Math.round(countries.length / countriesPerPage); //calculo la cantidad maxima de paginas segun el total de paises 
+    // hook cuando componente se muestra o cambia se disparan getcountries y byActivity y getactivity
     useEffect(() => {
         dispatch(getCountries())
         dispatch(byActivity())
     }, [dispatch])
-
+// de aquí en adelante controlo los cambios en los selectores de filtros y envio acciones al selector utilizando dispatch 
     function handleOrder(e) {
         e.preventDefault();
         dispatch(byOrder(e.target.value))
@@ -53,7 +53,7 @@ function Home() {
     useEffect(() => {
         dispatch(getActivity())
     }, [dispatch])
-
+// aqui todo lo que renderiza el componente home, selectores, muestra los paises, botones de paginado. 
     return (
         <div>
             <div className={style.filters}>

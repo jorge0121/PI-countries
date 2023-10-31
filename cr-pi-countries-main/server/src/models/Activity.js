@@ -1,3 +1,5 @@
+//define un modelo 'Activity' con atributos específicos y reglas sobre qué tipos de valores se pueden almacenar en cada campo.
+//El uso de ENUM en Sequelize permite restringir los valores que pueden ser almacenados en estos campos a una lista específica.
 const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {

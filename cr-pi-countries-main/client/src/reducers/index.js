@@ -1,3 +1,4 @@
+// aqui programo los cambios que va hacer el estado segun los tipos de acciones que se hacen el front
 import {
     GET_ACTIVITY,
     BY_CONTINENT,
@@ -9,7 +10,7 @@ import {
     BY_ACTIVITY,
     FAILURE,
     LOADING
-} from '../componentes/Controllers/ActionsName'
+} from '../Controllers/ActionsName'
 
 const initialState = {
     countries: [],
@@ -24,7 +25,7 @@ const initialState = {
 
 function reducer(state = initialState, action) {
     switch (action.type) {
-        case GET_COUNTRIES:
+        case GET_COUNTRIES: //actualizo la info de cada pais 
             return {
                 ...state,
                 error: "",
@@ -34,19 +35,19 @@ function reducer(state = initialState, action) {
                 allActivities: action.payload,
                 searchName: action.payload
             }
-        case GET_DETAIL:
+        case GET_DETAIL: //  actualizo la info de un pais especifico 
             return {
                 ...state,
                 details: action.payload,
                 loading: false
             }
-        case BY_NAME:
+        case BY_NAME: // filtro los paises por nombre
             return {
                 ...state,
                 countries: action.payload,
                 error: ""
             }
-        case BY_ODER:
+        case BY_ODER: // ordeno les ascendentes o descendentes 
             const orderCountries = action.payload === 'Asc' ?
                 state.countries.sort(function (a, b) {
                     if (a.name > b.name) {
@@ -70,13 +71,13 @@ function reducer(state = initialState, action) {
                 ...state,
                 countries: orderCountries
             }
-        case GET_ACTIVITY:
+        case GET_ACTIVITY: //obtengo la info sobre un actividad 
             return {
                 ...state,
                 loading: false,
                 activity: action.payload
             }
-        case BY_POPULATION:
+        case BY_POPULATION: // ordeno los paises segun la población 
             const orderPopulation = action.payload === 'Min' ?
                 state.countries.sort(function (a, b) {
                     if (a.population > b.population) {
@@ -100,7 +101,7 @@ function reducer(state = initialState, action) {
                 ...state,
                 population: orderPopulation
             }
-        case BY_CONTINENT:
+        case BY_CONTINENT: //filtro los paises por continentes 
             const allContinents = state.allContinents;
             const continentFilter = action.payload === 'All' ? allContinents :
                 allContinents.filter(i => i.continent === action.payload)
@@ -108,7 +109,7 @@ function reducer(state = initialState, action) {
                 ...state,
                 countries: continentFilter
             }
-        case BY_ACTIVITY:
+        case BY_ACTIVITY: // filtro los paises por actividad 
             const allActivities = state.allActivities;
             const activityFilter = action.payload === 'All' ? allActivities.filter(e => e.activities.length > 0) :
                 allActivities.filter(c => c.Activities.find((element) => element.name.toLowerCase() === action.payload))
@@ -119,7 +120,7 @@ function reducer(state = initialState, action) {
         case FAILURE:
             return {
                 ...state,
-                error: action.payload
+                error: action.payload  // manejo los errores 
             }
         case LOADING:
             return {

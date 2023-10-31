@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom'
-import { getActivity, getCountries, postActivity } from '../Controllers/index'
+import { getActivity, getCountries, postActivity } from '../../Controllers/index'
 import style from './Activity.module.css';
-//import Swal from 'sweetalert2'
+import Swal from 'sweetalert2'
 
 function valida(input) {
     let errors = {}
     if (!input.name) {
-        errors.name = "Name required"
+        
+        errors.name="required Data"
     }
     return errors;
 }
@@ -92,6 +93,7 @@ function AddActivity() {
 
     function handleSubmit(e) {
         e.preventDefault();
+    
         dispatch(postActivity(input))
 
        /*  alert('enviado') */
@@ -102,13 +104,13 @@ function AddActivity() {
             season: '',
             countries: []
         })
-         {/*history.push('/countries')
-      } Swal.fire({
-            title: 'Activity created successfully',
-            confirmButtonColor: "#34a57f"}/* ).then(function(){ 
+         {/*history.push('/countries')*/}
+      Swal.fire({
+            title: 'Successfully',
+            confirmButtonColor: "#34a57f"} ).then(function(){ 
                 window.location.replace('');
             }
-        ) */}
+        ) 
     }
 
     const season = ['Winter', 'Spring', 'Autumn', 'Summer'];
@@ -181,6 +183,6 @@ function AddActivity() {
             </div>
         </div>
     )
-}
 
+                                    }
 export default AddActivity
