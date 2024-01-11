@@ -5,15 +5,29 @@ const { Sequelize } = require("sequelize");
 const fs = require('fs');
 const path = require('path');
 
-const {
-  DB_USER, DB_PASSWORD, DB_HOST,
-} = process.env;
+//const {
+  //DB_USER, DB_PASSWORD, DB_HOST,
+//} = process.env;
 
 
-const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/countries`, {
+//const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/countries`, {
+  //logging: false, 
+  //native: false, 
+//});
+
+const sequelize = new Sequelize(`postgres://db_countries_1jla_user:mjjdyS2Hqn598PkEQWxosHgsImU4JGHc@dpg-cmg43gla73kc73f70if0-a.oregon-postgres.render.com/db_countries_1jla`, {
   logging: false, 
   native: false, 
+  dialectOptions: {
+    ssl: {
+      require: true,
+      rejectUnauthorized: false, // Solo si estás usando una base de datos que no tiene un certificado válido
+    },
+  },
 });
+
+
+
 const basename = path.basename(__filename);
 
 const modelDefiners = [];
