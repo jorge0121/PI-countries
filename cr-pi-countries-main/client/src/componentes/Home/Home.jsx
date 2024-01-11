@@ -57,14 +57,14 @@ function Home() {
     return (
         <div>
             <div className={style.filters}>
-                <div className={style.filter}>
-                    <select onChange={handleOrderPopulation}>
-                        <option value='Max' key='Max'>Max population</option>
+                <div className={style.filterContainer}>
+                    <select class={style.filterSelect} onChange={handleOrderPopulation}>
+                        <option value='Max' key='Max' className={style.filterOption}>Max population</option>
                         <option value='Min' key='Min'>Min population</option>
                     </select>
                 </div>
-                <div className={style.filter}>
-                    <select onChange={handleContinents}>
+                <div className={style.filterContainer}>
+                    <select onChange={handleContinents} class={style.filterSelect}>
                         <option value='All' key='All'>All continents</option>
                         <option value='Africa' key='Africa'>Africa</option>
                         <option value='Antarctica' key='Antarctica'>Antarctica</option>
@@ -75,16 +75,16 @@ function Home() {
                         <option value='South America' key='SouthAmerica'>South America</option>
                     </select>
                 </div>
-                <div className={style.filter}>
-                    <select onChange={handleActivity}>
+                <div className={style.filterContainer}>
+                    <select onChange={handleActivity} class={style.filterSelect}>
                         <option value='All'>All activities</option>
                         {activity.map(e => (
                             <option value={e} key={e}>{e}</option>
                         ))}
                     </select>
                 </div>
-                <div className={style.filter}>
-                    <select onChange={handleOrder}>
+                <div className={style.filterContainer}>
+                    <select onChange={handleOrder} class={style.filterSelect}>
                         <option value='Asc' key='Asc'>A-Z</option>
                         <option value='Desc' key='Desc'>Z-A</option>
                     </select>
