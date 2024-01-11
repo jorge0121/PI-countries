@@ -12,7 +12,7 @@ import {
 }from './ActionsName'
 import axios from 'axios';
 
-const url = 'http://localhost:3001';
+const url = 'https://servercountries-2u1b.onrender.com';
 
 export function getCountries() {
     return async function (dispatch) {
@@ -54,7 +54,7 @@ export function getDetail(id) {
 export function postActivity(payload) {
     return async function () {
         try {
-            const res = await axios.post('http://localhost:3001/activity', payload)
+            const res = await axios.post('https://servercountries-2u1b.onrender.com/activity', payload)
             return res;
         } catch (error) {
             console.log(error)
